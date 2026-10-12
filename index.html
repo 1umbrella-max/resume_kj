@@ -36,7 +36,7 @@
 .search input{flex:1;min-width:0;border:0;outline:none;background:transparent;font:inherit;font-size:14px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-.grid{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.grid{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
 .folder{position:relative;display:block;height:250px;border-radius:30px;overflow:hidden;background:var(--gray-grad);border:1px solid rgba(20,22,26,0.06);box-shadow:inset 0 1px 0 rgba(255,255,255,0.9),0 2px 6px rgba(20,22,26,0.04);transition:transform .2s,box-shadow .2s}
 .folder .s1,.folder .s2{position:absolute;left:22px;right:22px;height:100px;border-radius:12px;background:rgba(255,255,255,0.95)}
 .folder .s1{top:16px;left:30px;right:18px;opacity:.65;transform:rotate(-2deg)}
@@ -53,6 +53,15 @@
 .folder:hover .t,.folder:hover .c,.folder:hover .tab,.folder:focus-visible .t,.folder:focus-visible .c,.folder:focus-visible .tab{color:#fff}
 .folder:hover .k,.folder:focus-visible .k{background:#fff;color:var(--blue-text)}
 .empty{margin:24px 0 0;padding:24px;text-align:center;background:#fff;border:1px dashed rgba(20,22,26,0.2);border-radius:14px;color:var(--muted)}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;padding:4px;background:#fff;border:1px solid rgba(20,22,26,0.12);border-radius:12px}
+.tabs button{padding:7px 14px;border:0;border-radius:9px;background:transparent;font:inherit;font-size:14px;font-weight:600;color:rgba(20,22,26,0.65);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--blue-grad);color:#fff}
+.group{margin-top:26px}
+.group h2{font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px}
+.group h2::before{content:"";width:6px;height:18px;border-radius:3px;background:var(--blue-grad)}
+.group h2 span{font-size:13px;font-weight:600;color:var(--muted)}
+.sub .cat{margin-top:8px;padding:2px 10px;font-size:12px;font-weight:700;color:var(--blue-text)}
+.sub .cat:first-child{margin-top:0}
 .foot{margin-top:16px;font-size:12px;color:var(--muted)}
 @media (max-width:640px){.main{padding:22px 16px}}
 </style>
@@ -75,55 +84,81 @@
 <main class="main">
 <h1>AI 서비스를 <em>기획하고 끝까지 실행</em>하는<br>PM 겸 AI 기획자 박경지입니다.</h1>
 <ul class="kpis">
-<li><b>6건</b><span>2026 AI 프로젝트</span></li>
-<li><b>3건</b><span>기획 100% 전담</span></li>
+<li><b>12건</b><span>AI, UI/UX, 콘텐츠 3개 분야</span></li>
 <li><b>93%</b><span>ETF 에이전트 의도분류 정확도</span></li>
-<li><b>4.9 / 5</b><span>교원 연수 만족도</span></li>
+<li><b>600만 원</b><span>데이팅 앱 MVP 2주 매출</span></li>
+<li><b>10K+</b><span>광고 없이 만든 콘텐츠 조회수</span></li>
 </ul>
-<div class="skills"><span><b>PM</b> 제안, WBS, 정산</span><span><b>AI 기획</b> IA, 대화 시나리오</span><span><b>UI/UX</b> 화면 설계, 데모</span><span><b>실행</b> QA, 결과 보고</span></div>
+<div class="skills"><span><b>PM</b> 제안, WBS, 정산</span><span><b>AI 기획</b> IA, 대화 시나리오</span><span><b>UI/UX</b> 화면 설계, 데모</span><span><b>콘텐츠</b> 브랜딩, SNS 전략</span></div>
 
 <div class="bar">
-<h2>프로젝트 <span style="font-size:14px;font-weight:400;color:var(--muted)">누르면 상세로 이동</span></h2>
+<div class="tabs" role="group" aria-label="카테고리" id="tabs"></div>
 <label class="search">
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(20,22,26,0.55)" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
 <span class="sr">프로젝트 검색</span>
 <input type="search" id="q" placeholder="프로젝트, 발주처 검색">
 </label>
 </div>
-<div class="grid" id="grid"></div>
+<div id="groups"></div>
 <p class="empty" id="empty" hidden>검색 결과가 없습니다.</p>
-<p class="foot">기여도: 각 프로젝트 WBS와 투입률 기준</p>
+<p class="foot">AI 기획 기여도: 각 프로젝트 WBS와 투입률 기준</p>
 </main>
 
 </div>
 </div>
 
 <script>
-// 카드 내용 수정은 여기서: short(제목), client(발주), result(한 줄 성과), contrib(기여도 표시)
+// 카드 내용 수정은 여기서: cat(카테고리), short(제목), client(발주/브랜드), result(한 줄 성과), badge(뱃지 문구)
+const cats = [
+  { id: 'ai', name: 'AI 기획' },
+  { id: 'ux', name: 'UI/UX 기획' },
+  { id: 'content', name: '콘텐츠 기획' }
+];
 const projects = [
-  { id: 'jellyi', no: '01', short: '젤리아이 리뉴얼', client: '키즈엠', result: 'RFI부터 제안, WBS, 데모까지 리드', contrib: '기획 100%' },
-  { id: 'kofac', no: '02', short: '정보교원 AI 연수', client: '한국과학창의재단', result: '사업관리 PL, 만족도 4.9점', contrib: '기획 인력 62%' },
-  { id: 'gri', no: '03', short: '경기연구원 PoC', client: '경기연구원', result: 'AI 에이전트 4종을 5주 만에 검증', contrib: '기획 100%' },
-  { id: 'openinno', no: '04', short: '교사 업무비서', client: '아이스크림미디어', result: '교직원 87명 설문으로 MVP 정의', contrib: '서비스 기획 50%' },
-  { id: 'samsung', no: '05', short: 'ETF AI 에이전트', client: '삼성자산운용', result: '서비스 기획 전담, 정확도 93%', contrib: '기획 100%' },
-  { id: 'yes24', no: '06', short: '디지털 참고서 ISMP', client: '예스24', result: '8주 만에 AI 기능 5종 정의', contrib: null }
+  { cat: 'ai', id: 'jellyi', short: '젤리아이 리뉴얼', client: '키즈엠', result: 'RFI부터 제안, WBS, 데모까지 리드', badge: '기여도 기획 100%' },
+  { cat: 'ai', id: 'kofac', short: '정보교원 AI 연수', client: '한국과학창의재단', result: '사업관리 PL, 만족도 4.9점', badge: '기여도 기획 인력 62%' },
+  { cat: 'ai', id: 'gri', short: '경기연구원 PoC', client: '경기연구원', result: 'AI 에이전트 4종을 5주 만에 검증', badge: '기여도 기획 100%' },
+  { cat: 'ai', id: 'openinno', short: '교사 업무비서', client: '아이스크림미디어', result: '교직원 87명 설문으로 MVP 정의', badge: '기여도 서비스 기획 50%' },
+  { cat: 'ai', id: 'samsung', short: 'ETF AI 에이전트', client: '삼성자산운용', result: '서비스 기획 전담, 정확도 93%', badge: '기여도 기획 100%' },
+  { cat: 'ai', id: 'yes24', short: '디지털 참고서 ISMP', client: '예스24', result: '8주 만에 AI 기능 5종 정의', badge: null },
+  { cat: 'ux', id: 'anotherlounge', short: '어나더라운지', client: '데이팅 앱', result: 'MVP 2주 매출 600만 원, 전환율 40%', badge: '기여도 100%' },
+  { cat: 'ux', id: 'fittrip', short: '핏트립', client: '여행 플랫폼', result: '예비창업패키지 선정, 5,500만 원 확보', badge: '기여도 100%' },
+  { cat: 'content', id: 'rovyn', short: 'K-뷰티 Rovyn', client: 'FEEDFACE', result: '광고 없이 조회수 1만, DM 문의 하루 30건', badge: '조회수 10K+' },
+  { cat: 'content', id: 'refurlab', short: 'IT 리퍼연구소', client: 'FEEDFACE', result: '매거진형 콘텐츠로 구매 전환율 상승', badge: '전환율 +33%' },
+  { cat: 'content', id: 'walkd', short: '웰니스 Walkd', client: 'FEEDFACE', result: '신규 계정 1개월 팔로워 1,800명', badge: '팔로워 1.8K' },
+  { cat: 'content', id: 'redesign', short: '브랜드 리디자인 3종', client: 'FEEDFACE', result: '뷰티, 라이프스타일 브랜드 프리미엄 재설계', badge: '브랜드 3곳' }
 ];
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const q = document.getElementById('q');
-document.getElementById('nav-list').innerHTML = projects.map((p) => `<li><a href="${p.id}.html">${esc(p.short)}</a></li>`).join('');
+let tab = 'all';
+
+document.getElementById('nav-list').innerHTML = cats.map((c) =>
+  `<li class="cat">${esc(c.name)}</li>` + projects.filter((p) => p.cat === c.id).map((p) => `<li><a href="${p.id}.html">${esc(p.short)}</a></li>`).join('')
+).join('');
+
+function card(p, i) {
+  return `<a class="folder" href="${p.id}.html">
+    <span class="s1"></span><span class="s2">${esc(p.client)}</span>
+    <span class="tab">${String(i + 1).padStart(2, '0')}</span>
+    <span class="front"><span class="t">${esc(p.short)}</span><span class="c">${esc(p.result)}</span>
+    <span class="k${p.badge ? '' : ' none'}">${p.badge ? esc(p.badge) : '기여도 입력 필요'}</span></span>
+  </a>`;
+}
 
 function render() {
   const term = q.value.trim().toLowerCase();
-  const list = projects.filter((p) => !term || (p.short + p.client + p.result).toLowerCase().includes(term));
-  document.getElementById('grid').innerHTML = list.map((p) => `
-    <a class="folder" href="${p.id}.html">
-      <span class="s1"></span><span class="s2">${esc(p.client)}</span>
-      <span class="tab">${p.no}</span>
-      <span class="front"><span class="t">${esc(p.short)}</span><span class="c">${esc(p.result)}</span>
-      <span class="k${p.contrib ? '' : ' none'}">${p.contrib ? '기여도 ' + esc(p.contrib) : '기여도 입력 필요'}</span></span>
-    </a>`).join('');
-  document.getElementById('empty').hidden = list.length > 0;
+  document.getElementById('tabs').innerHTML = [{ id: 'all', name: '전체' }, ...cats].map((c) =>
+    `<button type="button" data-tab="${c.id}" aria-pressed="${tab === c.id}">${esc(c.name)}</button>`).join('');
+  let total = 0;
+  document.getElementById('groups').innerHTML = cats.filter((c) => tab === 'all' || tab === c.id).map((c) => {
+    const list = projects.filter((p) => p.cat === c.id && (!term || (p.short + p.client + p.result).toLowerCase().includes(term)));
+    total += list.length;
+    if (!list.length) return '';
+    return `<section class="group"><h2>${esc(c.name)} <span>${list.length}건</span></h2><div class="grid">${list.map(card).join('')}</div></section>`;
+  }).join('');
+  document.getElementById('empty').hidden = total > 0;
 }
+document.addEventListener('click', (e) => { const b = e.target.closest('[data-tab]'); if (b) { tab = b.dataset.tab; render(); } });
 q.addEventListener('input', render);
 render();
 </script>
