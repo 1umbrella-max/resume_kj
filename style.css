@@ -138,9 +138,9 @@ h1,h2,h3,p{margin:0}
 .chev{margin-left:auto;width:8px;height:8px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg);opacity:.5;transition:transform .2s}
 details[open] > summary .chev{transform:rotate(-135deg)}
 .navcat{margin-left:18px;padding-left:12px;border-left:1px solid rgba(20,22,26,0.1)}
-.navcat summary{display:flex;align-items:center;padding:6px 10px;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;list-style:none}
+.navcat summary{display:flex;align-items:center;padding:6px 10px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer;list-style:none}
 .sub{display:flex;flex-direction:column;gap:2px;margin:0 0 6px}
-.sub a{display:block;padding:6px 10px;border-radius:10px;font-size:14px;border:1px solid transparent;color:rgba(20,22,26,0.75)}
+.sub a{display:block;padding:5px 10px;border-radius:10px;font-size:12px;border:1px solid transparent;color:rgba(20,22,26,0.75)}
 .sub a:hover{background:rgba(20,22,26,0.04);color:var(--ink)}
 .sub a[aria-current="page"]{background:var(--gray-soft);border-color:rgba(20,22,26,0.08);color:var(--ink);font-weight:600}
 .side .me{margin-top:auto;padding:14px 8px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px}
@@ -156,3 +156,9 @@ details[open] > summary .chev{transform:rotate(-135deg)}
 .screens figure{margin:0}
 .screens img{display:block;width:100%;border-radius:14px;border:1px solid var(--line)}
 .screens figcaption{margin-top:6px;font-size:13px;color:var(--muted)}
+
+/* 프로필 연락처 복사 */
+.contact{margin-top:12px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.copy{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid rgba(20,22,26,0.12);border-radius:999px;background:#fff;font:inherit;font-size:14px;color:var(--ink);cursor:pointer}
+.copy:hover{background:var(--gray-soft)}
+.copied{font-size:13px;font-weight:600;color:var(--blue-text)}

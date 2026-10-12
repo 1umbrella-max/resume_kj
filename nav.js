@@ -31,5 +31,5 @@
         }).join('')}
       </details>
     </nav>
-    <a class="me" href="profile.html"><img src="profile.webp" alt=""><span><b>박경지</b><span>AI 기획자</span></span></a>`;
+    <a class="me" href="profile.html"><img src="profile.webp?v=2" alt=""><span><b>박경지</b><span>AI 기획자</span></span></a>`;
 })();
