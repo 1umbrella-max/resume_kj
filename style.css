@@ -54,10 +54,18 @@ h1,h2,h3,p{margin:0}
 .do span{font-size:14px;color:var(--muted)}
 .do i{display:inline-flex;width:28px;height:28px;border-radius:8px;align-items:center;justify-content:center;background:#fff;color:var(--ink);font-style:normal;font-size:13px;font-weight:700}
 
+/* 과업별 기여도 */
+.tasks{display:flex;flex-direction:column;gap:8px}
+.tasks li{display:grid;grid-template-columns:64px minmax(0,1fr) 56px;align-items:center;gap:12px;padding:14px 18px;border-radius:14px;background:var(--gray-soft);font-size:15px}
+.tasks .tag{justify-self:start;padding:3px 10px;border-radius:999px;background:#fff;color:var(--muted);font-size:12px;font-weight:700}
+.tasks .tag.lead{background:var(--ink);color:#fff}
+.tasks .tt{font-weight:600}
+.tasks .pc{text-align:right;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+
 /* 성과 숫자 */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
 .stats li{padding:22px;border-radius:18px;background:var(--gray-soft)}
-.stats b{display:block;font-size:32px;line-height:1.15;color:var(--ink)}
+.stats b{display:block;font-size:clamp(24px,3vw,32px);line-height:1.15;color:var(--ink)}
 .stats li:first-child b{color:var(--blue-text)}
 .stats span{font-size:14px;color:var(--muted)}
 
