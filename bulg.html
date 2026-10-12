@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>코오롱글로벌 BULG | 박경지 포트폴리오</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 <style>
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;align-items:start}
 .gallery img{display:block;width:100%;border-radius:18px;background:var(--gray-soft)}
@@ -13,8 +13,9 @@
 </head>
 <body>
 <div class="wrap">
-<article class="page">
-<nav class="topnav" aria-label="이동"><a href="index.html">← 홈</a></nav>
+<div class="app">
+<aside class="side" id="side"></aside>
+<main class="main detail">
 <div class="body">
 
 <header class="hero">
@@ -63,7 +64,10 @@
 </section>
 
 </div>
-</article>
+</main>
 </div>
+</div>
+<script src="data.js"></script>
+<script src="nav.js"></script>
 </body>
 </html>

@@ -4,88 +4,56 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>박경지 포트폴리오</title>
-<meta name="description" content="AI 기획자 박경지의 2026 프로젝트 포트폴리오">
+<meta name="description" content="AI 기획자 박경지의 프로젝트 포트폴리오">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 <style>
-.app{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;background:rgba(255,255,255,0.94);border:1px solid rgba(255,255,255,0.7);border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(47,107,224,0.12)}
-.side{flex:1 1 220px;padding:24px 18px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:24px;background:#fff}
-.logo{display:flex;align-items:center;gap:10px;padding:0 6px;font-weight:700;font-size:18px}
-.logo i{width:30px;height:30px;border-radius:8px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:14px}
-.nav .h{display:flex;align-items:center;gap:12px;padding:9px 8px;border-radius:10px;border:1px solid transparent;font-weight:600}
-.nav a.h:hover{background:rgba(20,22,26,0.04)}
-.nav .h[aria-current="page"]{background:var(--gray-grad);border-color:rgba(20,22,26,0.1)}
-.sub{margin-left:18px;padding-left:12px;border-left:1px solid rgba(20,22,26,0.1);display:flex;flex-direction:column;gap:2px}
-.sub a{display:block;padding:7px 10px;border-radius:10px;font-size:14px;border:1px solid transparent;color:rgba(20,22,26,0.75)}
-.sub a:hover{border-color:rgba(20,22,26,0.1);background:var(--gray-grad);color:var(--ink);font-weight:600}
-.me{margin-top:auto;padding:14px 8px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px}
-.me i{width:40px;height:40px;flex:0 0 40px;border-radius:50%;background:var(--blue-grad);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-style:normal}
-.main{flex:999 1 600px;min-width:0;padding:32px 32px 40px;background:#FAFBFC}
-.main h1{font-size:clamp(24px,3vw,30px);line-height:1.35;font-weight:700;letter-spacing:-0.02em}
-.main h1 em{font-style:normal;color:var(--blue-text)}
-.kpis{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
-.kpis li{padding:14px 18px;border-radius:16px;background:var(--blue-soft);border:1px solid rgba(79,134,240,0.18)}
-.kpis b{display:block;font-size:24px;line-height:1.2;color:var(--blue-text)}
-.kpis span{font-size:13px}
-.skills{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;font-size:13px}
-.skills span{padding:5px 12px;border-radius:999px;background:#fff;border:1px solid rgba(20,22,26,0.12)}
-.skills b{color:var(--blue-text)}
-.bar{margin-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
-.bar h2{font-size:18px;font-weight:700}
+.home{padding:32px 32px 40px}
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;padding:4px;background:#fff;border:1px solid rgba(20,22,26,0.12);border-radius:12px}
+.tabs button{padding:7px 14px;border:0;border-radius:9px;background:transparent;font:inherit;font-size:14px;font-weight:600;color:rgba(20,22,26,0.65);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--blue-grad);color:#fff}
 .search{width:280px;max-width:100%;display:flex;align-items:center;gap:8px;padding:0 12px;height:40px;background:#fff;border:1px solid rgba(20,22,26,0.12);border-radius:10px}
 .search input{flex:1;min-width:0;border:0;outline:none;background:transparent;font:inherit;font-size:14px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
+/* 접고 펴는 카테고리 그룹 */
+.group{margin-top:26px}
+.group > summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none;padding:6px 0}
+.group > summary::-webkit-details-marker{display:none}
+.group > summary h2{margin:0;font-size:18px;font-weight:700}
+.group > summary .cnt{font-size:13px;font-weight:600;color:var(--muted)}
+.group > summary .chev{margin-left:8px}
+.group > summary::before{content:"";width:4px;height:18px;border-radius:2px;background:var(--ink)}
+
+/* 폴더 카드 */
 .grid{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
 .folder{position:relative;display:block;height:250px;border-radius:30px;overflow:hidden;background:var(--gray-grad);border:1px solid rgba(20,22,26,0.06);box-shadow:inset 0 1px 0 rgba(255,255,255,0.9),0 2px 6px rgba(20,22,26,0.04);transition:transform .2s,box-shadow .2s}
 .folder .s1,.folder .s2{position:absolute;left:22px;right:22px;height:100px;border-radius:12px;background:rgba(255,255,255,0.95)}
 .folder .s1{top:16px;left:30px;right:18px;opacity:.65;transform:rotate(-2deg)}
 .folder .s2{top:24px;padding:12px 14px;font-size:12px;color:rgba(20,22,26,0.5)}
-.folder .tab{position:absolute;top:62px;right:0;width:58%;height:40px;border-radius:18px 0 0 0;padding:8px 18px 0 0;text-align:right;font-size:12px;font-weight:600;color:rgba(20,22,26,0.45)}
+.folder .s2 img{display:block;height:20px;width:auto;max-width:100%}
+.folder .tab{position:absolute;top:62px;right:0;width:58%;height:40px;border-radius:18px 0 0 0}
 .folder .front{position:absolute;left:0;right:0;top:86px;bottom:0;border-radius:18px 0 30px 30px;padding:18px 20px;display:flex;flex-direction:column}
 .folder .tab,.folder .front{background:linear-gradient(180deg,rgba(255,255,255,0.72) 0%,rgba(236,237,240,0.92) 100%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .folder .t{font-size:19px;font-weight:700;line-height:1.3}
 .folder .c{margin-top:6px;font-size:14px;line-height:1.45;color:rgba(20,22,26,0.72)}
 .folder .k{margin-top:auto;align-self:flex-start;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700;background:var(--blue-grad);color:#fff}
-.folder .kl{margin-top:auto;font-size:11px;font-weight:600;color:rgba(20,22,26,0.5)}
-.folder .kl + .k{margin-top:2px}
-.folder:hover .kl,.folder:focus-visible .kl{color:rgba(255,255,255,0.85)}
-.folder .k.none{background:rgba(20,22,26,0.08);color:rgba(20,22,26,0.6)}
 .folder:hover,.folder:focus-visible{transform:translateY(-3px);outline:none;background:linear-gradient(180deg,#7EA7F5 0%,#4F86F0 100%);box-shadow:0 14px 30px rgba(79,134,240,0.3)}
 .folder:hover .tab,.folder:hover .front,.folder:focus-visible .tab,.folder:focus-visible .front{background:linear-gradient(180deg,rgba(176,203,250,0.78) 0%,rgba(98,148,242,0.92) 100%)}
-.folder:hover .t,.folder:hover .c,.folder:hover .tab,.folder:focus-visible .t,.folder:focus-visible .c,.folder:focus-visible .tab{color:#fff}
+.folder:hover .t,.folder:hover .c,.folder:focus-visible .t,.folder:focus-visible .c{color:#fff}
 .folder:hover .k,.folder:focus-visible .k{background:#fff;color:var(--blue-text)}
 .empty{margin:24px 0 0;padding:24px;text-align:center;background:#fff;border:1px dashed rgba(20,22,26,0.2);border-radius:14px;color:var(--muted)}
-.tabs{display:flex;flex-wrap:wrap;gap:4px;padding:4px;background:#fff;border:1px solid rgba(20,22,26,0.12);border-radius:12px}
-.tabs button{padding:7px 14px;border:0;border-radius:9px;background:transparent;font:inherit;font-size:14px;font-weight:600;color:rgba(20,22,26,0.65);cursor:pointer}
-.tabs button[aria-pressed="true"]{background:var(--blue-grad);color:#fff}
-.group{margin-top:26px}
-.group h2{font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px}
-.group h2::before{content:"";width:6px;height:18px;border-radius:3px;background:var(--blue-grad)}
-.group h2 span{font-size:13px;font-weight:600;color:var(--muted)}
-.sub .cat{margin-top:8px;padding:2px 10px;font-size:12px;font-weight:700;color:var(--blue-text)}
-.sub .cat:first-child{margin-top:0}
-.foot{margin-top:16px;font-size:12px;color:var(--muted)}
-@media (max-width:640px){.main{padding:22px 16px}}
+.foot{margin-top:20px;font-size:12px;color:var(--muted)}
+@media (max-width:640px){.home{padding:22px 16px}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <div class="app">
+<aside class="side" id="side"></aside>
 
-<aside class="side">
-<div class="logo"><i>P</i>Portfolio</div>
-<nav class="nav" aria-label="프로젝트">
-<a class="h" href="index.html" aria-current="page" style="color:var(--ink)"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4v-5h-6v5H5a1 1 0 0 1-1-1z"/></svg>홈</a>
-<a class="h" href="profile.html" style="color:var(--ink)"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>프로필</a>
-<div class="h"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>프로젝트</div>
-<ul class="sub" id="nav-list"></ul>
-</nav>
-<a class="me" href="profile.html"><img src="profile.webp" alt="" style="width:40px;height:40px;flex:0 0 40px;border-radius:50%;object-fit:cover;object-position:center 20%"><span><b style="display:block;font-size:14px">박경지</b><span style="font-size:13px;color:var(--muted)">AI 기획자</span></span></a>
-</aside>
-
-<main class="main">
-
+<main class="main home">
 <div class="bar">
 <div class="tabs" role="group" aria-label="카테고리" id="tabs"></div>
 <label class="search">
@@ -102,42 +70,23 @@
 </div>
 </div>
 
+<script src="data.js"></script>
+<script src="nav.js"></script>
 <script>
-// 카드 내용 수정은 여기서: cat(카테고리), short(제목), client(발주/브랜드), result(한 줄 성과), contrib(기여도, AI/UI/UX) 또는 badge(콘텐츠 대표 성과)
-const cats = [
-  { id: 'ai', name: 'AI 기획' },
-  { id: 'ux', name: 'UI/UX 기획' },
-  { id: 'content', name: '콘텐츠 기획' }
-];
-const projects = [
-  { cat: 'ai', id: 'jellyi', short: '젤리아이 리뉴얼', client: '키즈엠', result: 'RFI부터 제안, WBS, 데모까지 리드', contrib: '기획 총괄' },
-  { cat: 'ai', id: 'kofac', short: '정보교원 AI 연수', client: '한국과학창의재단', result: '사업관리 PL, 만족도 4.9점', contrib: '사업관리 총괄' },
-  { cat: 'ai', id: 'gri', short: '경기연구원 PoC', client: '경기연구원', result: 'AI 에이전트 4종을 5주 만에 검증', contrib: 'PoC 기획 총괄' },
-  { cat: 'ai', id: 'openinno', short: '오픈이노베이션', client: '아이스크림미디어', result: 'AI 교사 업무비서, 교직원 87명 설문으로 MVP 정의', contrib: '서비스 기획 공동' },
-  { cat: 'ai', id: 'samsung', short: 'ETF AI 에이전트', client: '삼성자산운용', result: '서비스 기획 전담, 정확도 93%', contrib: '서비스 기획 총괄' },
-  { cat: 'ai', id: 'yes24', short: '디지털 참고서 ISMP', client: '예스24', result: '8주 만에 AI 기능 5종 정의', contrib: 'AI 기능 기획 총괄' },
-  { cat: 'ux', id: 'anotherlounge', short: '어나더라운지', client: '데이팅 앱', result: 'MVP 2주 매출 600만 원, 전환율 40%', contrib: '기획 총괄' },
-  { cat: 'ux', id: 'fittrip', short: '핏트립', client: '여행 플랫폼', result: '예비창업패키지 선정, 5,500만 원 확보', contrib: '기획 총괄' },
-  { cat: 'content', id: 'bulg', short: '코오롱글로벌 BULG', client: '코오롱글로벌', result: '부울경 로컬 매거진 카드뉴스 30편 이상', badge: '시리즈 6종 운영' },
-  { cat: 'content', id: 'rovyn', short: 'K-뷰티 Rovyn', client: 'FEEDFACE', result: '광고 없이 조회수 1만, DM 문의 하루 30건', badge: '조회수 10K+' },
-  { cat: 'content', id: 'refurlab', short: 'IT 리퍼연구소', client: 'FEEDFACE', result: '매거진형 콘텐츠로 구매 전환율 상승', badge: '전환율 +33%' },
-  { cat: 'content', id: 'walkd', short: '웰니스 Walkd', client: 'FEEDFACE', result: '신규 계정 1개월 팔로워 1,800명', badge: '팔로워 1.8K' },
-  { cat: 'content', id: 'redesign', short: '브랜드 리디자인 3종', client: 'FEEDFACE', result: '뷰티, 라이프스타일 브랜드 프리미엄 재설계', badge: '브랜드 3곳' }
-];
+// 카드 내용은 data.js에서 수정합니다.
+const { cats, projects } = window.PF;
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const q = document.getElementById('q');
+const closed = new Set();
 let tab = 'all';
 
-document.getElementById('nav-list').innerHTML = cats.map((c) =>
-  `<li class="cat">${esc(c.name)}</li>` + projects.filter((p) => p.cat === c.id).map((p) => `<li><a href="${p.id}.html">${esc(p.short)}</a></li>`).join('')
-).join('');
-
-function card(p, i) {
+function card(p) {
+  const sheet = p.logo ? `<img src="${p.logo}" alt="${esc(p.client)}">` : esc(p.client);
   return `<a class="folder" href="${p.id}.html">
-    <span class="s1"></span><span class="s2">${esc(p.client)}</span>
-    <span class="tab">${String(i + 1).padStart(2, '0')}</span>
+    <span class="s1"></span><span class="s2">${sheet}</span>
+    <span class="tab"></span>
     <span class="front"><span class="t">${esc(p.short)}</span><span class="c">${esc(p.result)}</span>
-    ${p.contrib ? `<span class="kl">기여도</span><span class="k">${esc(p.contrib)}</span>` : `<span class="k">${esc(p.badge)}</span>`}</span>
+    <span class="k">${esc(p.contrib || p.badge)}</span></span>
   </a>`;
 }
 
@@ -150,11 +99,17 @@ function render() {
     const list = projects.filter((p) => p.cat === c.id && (!term || (p.short + p.client + p.result).toLowerCase().includes(term)));
     total += list.length;
     if (!list.length) return '';
-    return `<section class="group"><h2>${esc(c.name)} <span>${list.length}건</span></h2><div class="grid">${list.map(card).join('')}</div></section>`;
+    return `<details class="group" data-cat="${c.id}"${closed.has(c.id) ? '' : ' open'}>
+      <summary><h2>${esc(c.name)}</h2><span class="cnt">${list.length}건</span><span class="chev" aria-hidden="true"></span></summary>
+      <div class="grid">${list.map(card).join('')}</div></details>`;
   }).join('');
   document.getElementById('empty').hidden = total > 0;
 }
 document.addEventListener('click', (e) => { const b = e.target.closest('[data-tab]'); if (b) { tab = b.dataset.tab; render(); } });
+document.getElementById('groups').addEventListener('toggle', (e) => {
+  const d = e.target; if (!d.dataset || !d.dataset.cat) return;
+  if (d.open) closed.delete(d.dataset.cat); else closed.add(d.dataset.cat);
+}, true);
 q.addEventListener('input', render);
 render();
 </script>

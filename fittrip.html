@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>핏트립 | 박경지 포트폴리오</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 <div class="wrap">
-<article class="page">
-<nav class="topnav" aria-label="이동"><a href="index.html">← 홈</a></nav>
+<div class="app">
+<aside class="side" id="side"></aside>
+<main class="main detail">
 <div class="body">
 
 <header class="hero">
@@ -19,7 +20,7 @@
 </header>
 
 <div class="summary">
-<div class="contrib"><div class="k">기여도</div><div class="v" style="font-size:24px">기획 총괄<small>주도 4건, 협업 1건</small></div></div>
+<div class="contrib"><div class="k">기여도</div><div class="v" style="font-size:24px">기획 총괄<small>주도 5건, 협업 1건</small></div></div>
 <div><div class="k">역할</div><div class="v">여행 서비스 기획 / PM</div></div>
 <div><div class="k">기간</div><div class="v">2022.05 ~ (1년 1개월)</div></div>
 <div><div class="k">범위</div><div class="v">모바일 웹, 앱, 어드민</div></div>
@@ -28,6 +29,7 @@
 <section class="sec">
 <h2>역할 및 기여도</h2>
 <ul class="tasks">
+<li><span class="tag lead">[주도]</span><span class="tt">예비창업패키지 사업계획서 작성</span><span class="pc">100%</span></li>
 <li><span class="tag lead">[주도]</span><span class="tt">IA와 기능 명세서</span><span class="pc">100%</span></li>
 <li><span class="tag lead">[주도]</span><span class="tt">역경매 비즈니스 모델 설계</span><span class="pc">100%</span></li>
 <li><span class="tag lead">[주도]</span><span class="tt">지도 기반 일정 UX와 동행 커뮤니티</span><span class="pc">100%</span></li>
@@ -60,7 +62,11 @@
 
 <section class="sec">
 <h2>서비스 화면</h2>
-<img class="shot" src="img/fittrip.jpg" alt="핏트립 동행 목록과 홈 화면" loading="lazy" style="max-width:640px">
+<div class="screens">
+<figure><img src="img/fittrip_home1.jpg" alt="핏트립 홈 상단: 코스 받기 검색" loading="lazy"><figcaption>홈, 코스 받기</figcaption></figure>
+<figure><img src="img/fittrip_home2.jpg" alt="핏트립 홈 하단: 추천 여행코스와 동행" loading="lazy"><figcaption>추천 코스와 동행</figcaption></figure>
+<figure><img src="img/fittrip_together.jpg" alt="핏트립 동행 목록 화면" loading="lazy"><figcaption>동행 목록</figcaption></figure>
+</div>
 </section>
 
 <section class="sec">
@@ -69,7 +75,10 @@
 </section>
 
 </div>
-</article>
+</main>
 </div>
+</div>
+<script src="data.js"></script>
+<script src="nav.js"></script>
 </body>
 </html>
