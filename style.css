@@ -162,3 +162,31 @@ details[open] > summary .chev{transform:rotate(-135deg)}
 .copy{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid rgba(20,22,26,0.12);border-radius:999px;background:#fff;font:inherit;font-size:14px;color:var(--ink);cursor:pointer}
 .copy:hover{background:var(--gray-soft)}
 .copied{font-size:13px;font-weight:600;color:var(--blue-text)}
+
+/* 작업물 갤러리 (AI 기획) */
+.work{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.work figure{margin:0}
+.work img{display:block;width:100%;border-radius:14px;border:1px solid var(--line);background:#fff}
+.work figcaption{margin-top:6px;font-size:13px;color:var(--muted)}
+
+/* 본문 오른쪽 위 이력서 다운로드 */
+.main{position:relative}
+.topbar{position:absolute;top:16px;right:20px;z-index:2}
+.dl{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:#fff;border:1px solid rgba(20,22,26,0.12);font-size:13px;font-weight:600;color:var(--ink)}
+.dl:hover{background:var(--gray-soft)}
+.main.detail .body{padding-top:56px}
+.main.home{padding-top:64px}
+
+/* 메뉴 머리 + 휴대폰 메뉴 버튼 */
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.side-head .logo{padding:0 6px;font-weight:700;font-size:18px}
+.menu-btn{display:none;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(20,22,26,0.12);border-radius:10px;background:#fff;color:var(--ink);cursor:pointer}
+@media (max-width:899px){
+  .wrap{padding:12px 10px 40px}
+  .side{flex:1 1 100%;padding:12px 14px;gap:0;border-right:0;border-bottom:1px solid var(--line)}
+  .menu-btn{display:flex}
+  .side .nav,.side .me{display:none}
+  .side.open .nav{display:flex;margin-top:12px}
+  .side.open .me{display:flex;margin-top:12px}
+  .topbar{top:12px;right:14px}
+}
