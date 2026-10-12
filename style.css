@@ -169,13 +169,6 @@ details[open] > summary .chev{transform:rotate(-135deg)}
 .work img{display:block;width:100%;border-radius:14px;border:1px solid var(--line);background:#fff}
 .work figcaption{margin-top:6px;font-size:13px;color:var(--muted)}
 
-/* 본문 오른쪽 위 이력서 다운로드 */
-.main{position:relative}
-.topbar{position:absolute;top:16px;right:20px;z-index:2}
-.dl{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:#fff;border:1px solid rgba(20,22,26,0.12);font-size:13px;font-weight:600;color:var(--ink)}
-.dl:hover{background:var(--gray-soft)}
-.main.detail .body{padding-top:56px}
-.main.home{padding-top:64px}
 
 /* 메뉴 머리 + 휴대폰 메뉴 버튼 */
 .side-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
@@ -188,5 +181,4 @@ details[open] > summary .chev{transform:rotate(-135deg)}
   .side .nav,.side .me{display:none}
   .side.open .nav{display:flex;margin-top:12px}
   .side.open .me{display:flex;margin-top:12px}
-  .topbar{top:12px;right:14px}
 }

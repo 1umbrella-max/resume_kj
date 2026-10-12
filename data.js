@@ -10,7 +10,7 @@ window.PF = {
   projects: [
     { cat: 'ai', id: 'jellyi', short: '젤리아이 리뉴얼', client: '키즈엠', result: 'RFI부터 제안, WBS, 데모까지 리드', contrib: '기획 총괄', logo: 'img/logo_nxn.png' },
     { cat: 'ai', id: 'kofac', short: '정보교원 AI 연수', client: '한국과학창의재단', result: '사업관리 PL, 만족도 4.9점', contrib: '사업관리 총괄', logo: 'img/logo_kofac.png' },
-    { cat: 'ai', id: 'gri', short: '경기연구원 PoC', client: '경기연구원', result: 'AI 에이전트 4종을 5주 만에 검증', contrib: 'PoC 기획 총괄', logo: 'img/logo_gri.png' },
+    { cat: 'ai', id: 'gri', short: '정책연구기관 AI PoC', client: '경기도 소재 정책연구기관', result: 'AI 에이전트 4종을 5주 만에 검증', contrib: 'PoC 기획 총괄' },
     { cat: 'ai', id: 'openinno', short: '오픈이노베이션', client: '아이스크림미디어', result: 'AI 교사 업무비서, 교직원 87명 설문으로 MVP 정의', contrib: '서비스 기획 공동', logo: 'img/logo_iscream.png' },
     { cat: 'ai', id: 'samsung', short: 'ETF AI 에이전트', client: '삼성자산운용', result: '서비스 기획 전담, 정확도 93%', contrib: '서비스 기획 총괄', logo: 'img/logo_kodex.png' },
     { cat: 'ai', id: 'yes24', short: '디지털 참고서 ISMP', client: '예스24', result: '8주 만에 AI 기능 5종 정의', contrib: 'AI 기능 기획 총괄', logo: 'img/logo_yes24.png' },

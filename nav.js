@@ -1,5 +1,5 @@
 // 모든 페이지에 같은 왼쪽 메뉴를 그립니다. (<aside class="side" id="side"></aside> 자리에)
-// 휴대폰에서는 상단 바 + ☰ 버튼으로 접히고, 본문 오른쪽 위에는 이력서 PDF 다운로드 아이콘이 붙습니다.
+// 휴대폰에서는 상단 바 + ☰ 버튼으로 접힙니다.
 (function () {
   const side = document.getElementById('side');
   if (!side || !window.PF) return;
@@ -46,12 +46,4 @@
     btn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
   });
 
-  // 이력서 PDF 다운로드 아이콘 (본문 오른쪽 위)
-  const main = document.querySelector('.main');
-  if (main) {
-    const bar = document.createElement('div');
-    bar.className = 'topbar';
-    bar.innerHTML = `<a class="dl" href="resume.pdf" download="박경지_이력서.pdf" title="이력서 PDF 다운로드" aria-label="이력서 PDF 다운로드">${svg(icon.download, 18)}<span>이력서</span></a>`;
-    main.prepend(bar);
-  }
 })();
