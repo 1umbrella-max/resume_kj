@@ -15,7 +15,7 @@
   const inProjects = PF.projects.some((p) => p.id + '.html' === here);
 
   side.innerHTML = `
-    <a class="logo" href="index.html"><i>P</i>Portfolio</a>
+    <a class="logo" href="index.html">Portfolio</a>
     <nav class="nav" aria-label="메뉴">
       <a class="h" href="index.html"${cur('index.html')}>${svg(icon.home)}홈</a>
       <a class="h" href="profile.html"${cur('profile.html')}>${svg(icon.user)}프로필</a>
