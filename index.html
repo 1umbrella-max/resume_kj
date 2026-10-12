@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>박경지 포트폴리오</title>
+<meta name="description" content="PM 겸 AI 기획자 박경지의 2026 프로젝트 포트폴리오">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--ink:#14161A;--accent:#2563EB;--muted:rgba(20,22,26,0.62);--line:rgba(20,22,26,0.08)}
+*{box-sizing:border-box}
+body{margin:0;background:rgba(37,99,235,0.07);color:var(--ink);font-family:'Pretendard',sans-serif;font-size:15px;line-height:1.6;word-break:keep-all}
+a{color:var(--ink);text-decoration:none}a:hover{color:var(--accent)}
+ul{margin:0;padding:0;list-style:none}
+button{font:inherit;color:inherit}
+.wrap{padding:32px 16px}
+.app{max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(20,22,26,0.08)}
+.side{flex:1 1 230px;padding:24px 18px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;padding:0 6px;font-weight:700;font-size:18px}
+.logo i{width:30px;height:30px;border-radius:8px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:14px}
+.nav{display:flex;flex-direction:column;gap:2px;font-size:15px}
+.nav a,.nav .h{display:flex;align-items:center;gap:12px;padding:9px 8px;border-radius:10px;color:rgba(20,22,26,0.75)}
+.nav .h{color:var(--ink);font-weight:600}
+.sub{margin-left:18px;padding-left:12px;border-left:1px solid rgba(20,22,26,0.1);display:flex;flex-direction:column;gap:2px}
+.sub button{width:100%;text-align:left;padding:7px 10px;border-radius:10px;cursor:pointer;font-size:14px;border:1px solid transparent;background:transparent;color:rgba(20,22,26,0.75)}
+.sub button[aria-current="true"]{border-color:rgba(20,22,26,0.1);background:rgba(20,22,26,0.04);font-weight:600;color:var(--ink)}
+.me{margin-top:auto;padding:14px 8px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.me i{width:40px;height:40px;flex:0 0 40px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-style:normal}
+.main{flex:999 1 560px;min-width:0;padding:24px 28px 32px;background:rgba(20,22,26,0.015)}
+.crumb{font-size:14px;color:var(--muted)}
+h1{margin:14px 0 0;font-size:26px;font-weight:700;letter-spacing:-0.02em}
+.lead{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.search{margin-top:20px;max-width:320px;display:flex;align-items:center;gap:8px;padding:0 12px;height:40px;background:#fff;border:1px solid rgba(20,22,26,0.12);border-radius:10px}
+.search input{flex:1;min-width:0;border:0;outline:none;background:transparent;font:inherit;font-size:14px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.grid{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.folder{position:relative;display:block;width:100%;height:240px;padding:0;border:1px solid rgba(20,22,26,0.06);border-radius:28px;overflow:hidden;cursor:pointer;text-align:left;background:rgba(20,22,26,0.05)}
+.folder .s1{position:absolute;top:20px;left:30px;right:26px;height:110px;background:#fff;border-radius:12px;opacity:.6;transform:rotate(-2.5deg)}
+.folder .s2{position:absolute;top:28px;left:20px;right:20px;height:110px;padding:12px 14px;background:#fff;border-radius:12px;font-size:11px;line-height:1.55;color:rgba(20,22,26,0.6);overflow:hidden}
+.folder .tab{position:absolute;top:70px;right:0;width:56%;height:44px;padding:8px 18px 0 0;text-align:right;background:rgba(255,255,255,0.86);border-radius:18px 0 0 0;font-size:12px;font-weight:600;color:var(--muted)}
+.folder .front{position:absolute;left:0;right:0;top:98px;bottom:0;padding:18px 20px;background:rgba(255,255,255,0.86);border-radius:18px 0 28px 28px;display:flex;flex-direction:column}
+.folder .t{font-size:18px;font-weight:700;line-height:1.3}
+.folder .c{margin-top:4px;font-size:14px;color:var(--muted)}
+.folder .k{margin-top:auto;font-size:13px;font-weight:600;color:var(--muted)}
+.folder[aria-pressed="true"]{background:var(--accent)}
+.folder[aria-pressed="true"] .tab,.folder[aria-pressed="true"] .front{background:rgba(37,99,235,0.88);color:#fff}
+.folder[aria-pressed="true"] .c,.folder[aria-pressed="true"] .k,.folder[aria-pressed="true"] .tab{color:rgba(255,255,255,0.9)}
+.empty{margin:24px 0 0;padding:24px;text-align:center;background:#fff;border:1px dashed rgba(20,22,26,0.2);border-radius:14px;color:var(--muted)}
+.widgets{margin-top:24px;display:flex;flex-wrap:wrap;gap:18px}
+.card{padding:20px;background:#fff;border:1px solid var(--line);border-radius:18px}
+.card h2{margin:0;font-size:16px;font-weight:700}
+.bars{margin-top:14px;display:flex;flex-direction:column;gap:12px}
+.bars li{display:grid;grid-template-columns:120px minmax(0,1fr) 128px;align-items:center;gap:12px;font-size:13px}
+.bar{height:10px;border-radius:5px;background:rgba(20,22,26,0.07)}
+.bar span{display:block;height:10px;border-radius:5px;background:var(--accent)}
+.skills li{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}.skills li:last-child{border:0}
+.skills span{color:var(--muted)}
+.info{flex:1 1 300px;max-width:100%;border-left:1px solid var(--line);display:flex;flex-direction:column}
+.info-h{padding:22px 22px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.info-b{padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.contrib{padding:16px;border-radius:14px;background:var(--accent);color:#fff}
+.role{padding:14px 16px;border:1px solid rgba(20,22,26,0.1);border-radius:14px}
+dl{margin:0;font-size:13px;display:grid;grid-template-columns:auto 1fr;gap:6px 16px}
+dt{color:var(--muted)}dd{margin:0;text-align:right;font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{padding:2px 10px;font-size:12px;border-radius:6px;border:1px solid rgba(20,22,26,0.12);background:rgba(20,22,26,0.03)}
+.go{margin-top:4px;display:flex;justify-content:center;align-items:center;height:44px;border-radius:12px;background:var(--ink);color:#fff!important;font-weight:600;font-size:14px}
+h3{margin:6px 0;font-size:15px;font-weight:700}
+@media (max-width:600px){.main{padding:20px 16px}.bars li{grid-template-columns:90px minmax(0,1fr);}.bars li .v{grid-column:1/-1;text-align:left!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="app">
+
+<aside class="side">
+<div class="logo"><i>P</i>Portfolio</div>
+<nav class="nav" aria-label="메뉴">
+<a href="#overview"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4v-5h-6v5H5a1 1 0 0 1-1-1z"/></svg>대시보드</a>
+<div class="h"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>프로젝트</div>
+<ul class="sub" id="nav-list"></ul>
+<a href="#contribution"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>기여도</a>
+<a href="#skills"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 16.4 6.7 19.1l1-5.8-4.2-4.1 5.9-.9z"/></svg>역량</a>
+</nav>
+<div class="me"><i>박</i><span><b style="display:block;font-size:14px">박경지</b><span style="font-size:13px;color:var(--muted)">PM 겸 AI 기획자</span></span></div>
+</aside>
+
+<main class="main" id="overview">
+<div class="crumb">라이브데이터 › <b style="color:var(--ink)">2026 Projects</b></div>
+<h1>2026 프로젝트</h1>
+<p class="lead">PM 겸 AI 기획자로서 제안, 서비스 기획, 사업 관리를 맡은 프로젝트 6건입니다. 폴더를 누르면 오른쪽에 내 역할과 기여도가 나옵니다.</p>
+<label class="search">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(20,22,26,0.55)" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<span class="sr">프로젝트 검색</span>
+<input type="search" id="q" placeholder="프로젝트, 발주처 검색">
+</label>
+<div class="grid" id="grid"></div>
+<p class="empty" id="empty" hidden>검색 결과가 없습니다.</p>
+
+<div class="widgets">
+<section class="card" id="contribution" style="flex:999 1 420px;min-width:0">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px"><h2>프로젝트별 내 기여도</h2><span style="font-size:12px;color:var(--muted)">막대: 기획 영역 / 숫자: 기획 영역, 전체 WBS</span></div>
+<ul class="bars" id="bars"></ul>
+<p style="margin:14px 0 0;font-size:12px;color:rgba(20,22,26,0.55)">각 프로젝트 WBS와 참여인력 투입률을 근거로 산정했고, 여러 명이 함께 맡은 과업은 인원수로 나눴습니다.</p>
+</section>
+<section class="card" id="skills" style="flex:1 1 280px">
+<h2>What I Do</h2>
+<ul class="skills" style="margin-top:10px">
+<li><b>PM</b> <span>제안, WBS, 사업 관리 및 정산</span></li>
+<li><b>AI 서비스 기획</b> <span>IA, 대화 시나리오, 기능 정의</span></li>
+<li><b>UI/UX</b> <span>화면 설계, 위젯, 인터랙션</span></li>
+<li><b>실행</b> <span>데모 출시, QA, 결과 보고</span></li>
+</ul>
+</section>
+</div>
+</main>
+
+<aside class="info" aria-label="선택한 프로젝트 정보">
+<div class="info-h"><h2 style="margin:0;font-size:18px">Info</h2><span id="i-no" style="font-size:12px;color:var(--muted)"></span></div>
+<div class="info-b" id="info"></div>
+</aside>
+
+</div>
+</div>
+
+<script>
+const projects = [
+  { id: 'jellyi', no: '01', short: '젤리아이 리뉴얼', title: '유아 AI 교육 플랫폼 ‘젤리아이’ 전면 리뉴얼', client: '키즈엠 / NXN', period: '2026.07 — 2027.03', type: '플랫폼 구축', scale: '서비스 접점 5종, 요구사항 127개', plan: 100, planLabel: '기획 영역', total: 11, totalLabel: '전체 WBS 공수', basis: 'WBS상 기획 담당(기획 PL)으로 36개 과업 중 10건 참여, 전체 112.5 M/M 중 12.2 M/M (공동 과업은 역할 수로 균등 분할)', roles: ['UI/UX 설계 및 서비스 데모 출시', 'RFI 회신서 작성', '구축 WBS 기획', '제안서 작성'], tags: ['유아교육', 'LCMS', 'AI 독서튜터', 'B2B/B2C'], sheet: '기관과 가정의 학습 이력을 하나로. 전자칠판, 태블릿, 앱 통합 리뉴얼' },
+  { id: 'kofac', no: '02', short: '정보교원 AI 연수', title: '기업 연계 정보교원 AI 역량강화 연수', client: '한국과학창의재단', period: '2026.04 — 2026.12', type: '교원 연수 국고사업', scale: '11차시 커리큘럼, 1기 만족도 4.9/5', plan: 62, planLabel: '기획 인력 투입 비중', total: 35, totalLabel: '참여인력 전체 투입 비중', basis: '사업계획서와 운영 예산의 투입률 기준. 본인 투입률 65.2%로 라이브데이터 참여인력 4명 중 가장 높음', roles: ['사업관리 PL', '사업계획서 및 예산 집행 계획 작성', '지출결의와 정산 증빙 관리', '워크숍 및 협의회 운영'], tags: ['교원연수', '노코드 에이전트', '바이브 코딩', '정산'], sheet: '정보 교사가 직접 AI 에이전트를 만들어 수업에 쓰는 산학 협력 연수' },
+  { id: 'gri', no: '03', short: '업무지원 AI PoC', title: '연구기관 업무지원 AI 에이전트 PoC 4종', client: '경기연구원', period: '2026.04 — 2026.09', type: '공공 AI 전환 PoC', scale: 'PoC 4종, 5주 수행', plan: null, roles: [], tags: ['공공기관', '규정 챗봇', 'LLM Judge', '온프레미스'], sheet: '반복 행정을 줄이는 내부용 AI. 주간보고, 연구계획서, 채용, 규정' },
+  { id: 'openinno', no: '04', short: '교사 업무비서', title: 'AI 학교 교사 업무비서 서비스', client: '아이스크림미디어', period: '2026.07 — 2027.02', type: '오픈이노베이션 실증', scale: '교직원 설문 87명, MVP 3개', plan: 50, planLabel: '서비스 기획 과업', total: 14, totalLabel: '전체 WBS 과업', basis: '개발 WBS 기준. 서비스 기획 5건을 2인 공동 담당, 담당자가 배정된 56개 과업 중 12건 참여 (공동 과업은 인원수로 균등 분할)', roles: ['MVP 기능 범위와 우선순위 확정', '권한 및 알림 정책 정의', '화면 디자인 및 개발 전달', '데모 피드백 반영, QA, 매뉴얼', '실증 피드백 수집과 결과보고서'], tags: ['에듀테크', '캘린더', 'AI 에이전트', '실증'], sheet: '공문, 학사일정, 학생 기록을 캘린더 하나와 대화형 에이전트로' },
+  { id: 'samsung', no: '05', short: 'ETF AI 에이전트', title: 'KODEX ETF 특화 AI 에이전트 구축', client: '삼성자산운용', period: '2026.04 — 2026.07', type: '금융 AI 에이전트', scale: '핵심기능 17개, 의도분류 정확도 93%', plan: 100, planLabel: '서비스 기획 과업', total: 12, totalLabel: '전체 WBS 과업', basis: '스프린트 WBS 기준. 서비스 기획 과업 8건 전담, 전체 72개 과업 중 10건 담당 (공동 과업은 인원수로 균등 분할)', roles: ['IA 및 사용자 플로우 설계', '에이전트 역할, 페르소나, 대화 시나리오', '채팅 UI와 위젯, 인터랙션 설계', '어드민 기획', '품질 및 성능테스트 결과 보고서, 상용 배포'], tags: ['금융', 'RAG', 'MCP', 'LLM 평가'], sheet: '상품명을 몰라도 투자 목적만으로 ETF를 찾는 대화형 에이전트' },
+  { id: 'yes24', no: '06', short: '디지털 참고서 ISMP', title: '디지털 참고서 플랫폼 ISMP 컨설팅', client: '예스24', period: '2026.04 — 2026.06', type: '전략 컨설팅', scale: '8주, AI 기능 5종 정의', plan: null, roles: [], tags: ['ISMP', '에듀테크', 'AI 학습', '와이어프레임'], sheet: '종이 참고서를 AI 학습 서비스로. 뷰어 안에서 끊김 없는 학습' }
+];
+
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+let sel = 'jellyi';
+const q = document.getElementById('q');
+
+function render() {
+  const term = q.value.trim().toLowerCase();
+  document.getElementById('nav-list').innerHTML = projects.map((p) =>
+    `<li><button type="button" data-id="${p.id}" aria-current="${p.id === sel}">${esc(p.short)}</button></li>`).join('');
+
+  const list = projects.filter((p) => !term || (p.title + p.client + p.short + p.tags.join(' ')).toLowerCase().includes(term));
+  document.getElementById('grid').innerHTML = list.map((p) => `
+    <button type="button" class="folder" data-id="${p.id}" aria-pressed="${p.id === sel}">
+      <span class="s1"></span><span class="s2">${esc(p.sheet)}</span>
+      <span class="tab">${p.no}</span>
+      <span class="front"><span class="t">${esc(p.short)}</span><span class="c">${esc(p.client)}</span>
+      <span class="k">${p.plan === null ? '내 기여도 직접 입력' : `내 기여도 ${p.plan}% (${esc(p.planLabel)})`}</span></span>
+    </button>`).join('');
+  document.getElementById('empty').hidden = list.length > 0;
+
+  document.getElementById('bars').innerHTML = projects.map((p) => `
+    <li><span style="font-weight:600">${esc(p.short)}</span>
+    <span class="bar"><span style="width:${p.plan ?? 0}%"></span></span>
+    <span class="v" style="text-align:right;color:rgba(20,22,26,0.75)">${p.plan === null ? '직접 입력 필요' : `기획 ${p.plan}% / 전체 ${p.total}%`}</span></li>`).join('');
+
+  const s = projects.find((p) => p.id === sel);
+  document.getElementById('i-no').textContent = s.no + ' / 06';
+  document.getElementById('info').innerHTML = `
+    <div><div style="font-size:13px;color:var(--accent);font-weight:600">${esc(s.client)}</div>
+    <div style="font-size:19px;font-weight:700;line-height:1.35;margin-top:2px">${esc(s.title)}</div></div>
+    <div class="contrib"><div style="font-size:13px;font-weight:600">내 기여도</div>
+    ${s.plan === null ? `<div style="margin-top:4px;font-size:26px;font-weight:700">[ ]%</div><div style="margin-top:4px;font-size:12px">담당자가 표시된 WBS가 없어 직접 입력이 필요합니다.</div>` : `
+      <div style="display:flex;align-items:baseline;gap:10px;margin-top:2px"><span style="font-size:34px;font-weight:700;line-height:1.2">${s.plan}%</span><span style="font-size:13px">${esc(s.planLabel)}</span></div>
+      <div style="margin-top:8px;height:6px;border-radius:3px;background:rgba(255,255,255,0.3)"><div style="height:6px;border-radius:3px;width:${s.plan}%;background:#fff"></div></div>
+      <div style="margin-top:12px;display:flex;align-items:baseline;gap:10px"><span style="font-size:22px;font-weight:700">${s.total}%</span><span style="font-size:13px">${esc(s.totalLabel)}</span></div>
+      <div style="margin-top:8px;font-size:12px;line-height:1.5;color:rgba(255,255,255,0.9)">${esc(s.basis)}</div>`}
+    </div>
+    ${s.roles.length ? `<div class="role"><div style="font-size:13px;color:var(--muted)">내 역할</div>
+      <ul style="margin-top:6px;display:flex;flex-direction:column;gap:6px;font-size:14px">${s.roles.map((r) => `<li style="display:flex;gap:8px"><span style="color:var(--accent)" aria-hidden="true">●</span><span>${esc(r)}</span></li>`).join('')}</ul></div>` : ''}
+    <div><h3>Properties</h3><dl>
+      <dt>발주</dt><dd>${esc(s.client)}</dd><dt>기간</dt><dd>${esc(s.period)}</dd>
+      <dt>유형</dt><dd>${esc(s.type)}</dd><dt>규모</dt><dd>${esc(s.scale)}</dd></dl></div>
+    <div><h3>Tags</h3><div class="tags">${s.tags.map((t) => `<span>${esc(t)}</span>`).join('')}</div></div>
+    <a class="go" href="${s.id}.html">프로젝트 상세 보기 →</a>`;
+}
+
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-id]');
+  if (b) { sel = b.dataset.id; render(); }
+});
+q.addEventListener('input', render);
+render();
+</script>
+</body>
+</html>
