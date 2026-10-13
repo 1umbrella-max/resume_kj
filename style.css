@@ -182,3 +182,16 @@ details[open] > summary .chev{transform:rotate(-135deg)}
   .side.open .nav{display:flex;margin-top:12px}
   .side.open .me{display:flex;margin-top:12px}
 }
+
+/* 프로필 직무 태그 */
+.roles{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.roles li{padding:4px 12px;border-radius:999px;background:var(--gray-soft);font-size:13px;font-weight:600;color:var(--ink)}
+
+/* 휴대폰 메뉴 안내 말풍선 */
+.menu-tip{display:none}
+@media (max-width:899px){
+  .side-head{position:relative}
+  .menu-tip{display:block;position:absolute;right:0;top:50px;z-index:20;padding:10px 14px;border-radius:12px;background:var(--ink);color:#fff;font-size:14px;font-weight:600;white-space:nowrap;box-shadow:0 8px 24px rgba(20,22,26,0.25);animation:tipIn .3s ease-out}
+  .menu-tip::before{content:"";position:absolute;top:-6px;right:14px;width:12px;height:12px;background:var(--ink);transform:rotate(45deg)}
+}
+@keyframes tipIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}

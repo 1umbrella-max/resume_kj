@@ -46,4 +46,20 @@
     btn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
   });
 
+  // 휴대폰에서 처음 들어오면 "메뉴를 클릭하세요!" 안내를 보여주고, 화면 아무 곳이나 터치하면 사라집니다.
+  let seen = false;
+  try { seen = sessionStorage.getItem('menuTipSeen') === '1'; } catch (e) {}
+  if (!wide && !seen) {
+    const tip = document.createElement('div');
+    tip.className = 'menu-tip';
+    tip.setAttribute('role', 'status');
+    tip.textContent = '메뉴를 클릭하세요!';
+    side.querySelector('.side-head').appendChild(tip);
+    const hide = () => {
+      tip.remove();
+      try { sessionStorage.setItem('menuTipSeen', '1'); } catch (e) {}
+      document.removeEventListener('pointerdown', hide, true);
+    };
+    document.addEventListener('pointerdown', hide, true);
+  }
 })();
